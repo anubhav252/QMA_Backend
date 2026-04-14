@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "NopHVQLd+vI=",
+  "dgSpecHash": "HIpoBIrdjUs=",
   "success": true,
-  "projectFilePath": "D:\\QuantityMeasurementAppLocal\\Backend\\QuantityMeasurementModel\\QuantityMeasurementModel.csproj",
+  "projectFilePath": "D:\\QMA_Backend\\QuantityMeasurementModel\\QuantityMeasurementModel.csproj",
   "expectedPackageFiles": [],
   "logs": []
 }
