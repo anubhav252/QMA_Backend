@@ -1,5 +1,6 @@
-﻿using System;
+using System;
 using Microsoft.EntityFrameworkCore.Migrations;
+using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 
 #nullable disable
 
@@ -15,14 +16,14 @@ namespace QuantityMeasurementData.Migrations
                 name: "Operations",
                 columns: table => new
                 {
-                    Id = table.Column<int>(type: "int", nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
-                    FirstQuantityId = table.Column<int>(type: "int", nullable: false),
-                    SecondQuantityId = table.Column<int>(type: "int", nullable: false),
-                    OperationType = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    ResultValue = table.Column<double>(type: "float", nullable: false),
-                    ResultUnit = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    CreatedAt = table.Column<DateTime>(type: "datetime2", nullable: false)
+                    Id = table.Column<int>(type: "integer", nullable: false)
+                        .Annotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn),
+                    FirstQuantityId = table.Column<int>(type: "integer", nullable: false),
+                    SecondQuantityId = table.Column<int>(type: "integer", nullable: false),
+                    OperationType = table.Column<string>(type: "text", nullable: false),
+                    ResultValue = table.Column<double>(type: "double precision", nullable: false),
+                    ResultUnit = table.Column<string>(type: "text", nullable: false),
+                    CreatedAt = table.Column<DateTime>(type: "timestamp with time zone", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -33,11 +34,11 @@ namespace QuantityMeasurementData.Migrations
                 name: "Quantities",
                 columns: table => new
                 {
-                    Id = table.Column<int>(type: "int", nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
-                    Value = table.Column<double>(type: "float", nullable: false),
-                    Unit = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    Category = table.Column<string>(type: "nvarchar(max)", nullable: false)
+                    Id = table.Column<int>(type: "integer", nullable: false)
+                        .Annotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn),
+                    Value = table.Column<double>(type: "double precision", nullable: false),
+                    Unit = table.Column<string>(type: "text", nullable: false),
+                    Category = table.Column<string>(type: "text", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -48,11 +49,8 @@ namespace QuantityMeasurementData.Migrations
         /// <inheritdoc />
         protected override void Down(MigrationBuilder migrationBuilder)
         {
-            migrationBuilder.DropTable(
-                name: "Operations");
-
-            migrationBuilder.DropTable(
-                name: "Quantities");
+            migrationBuilder.DropTable(name: "Operations");
+            migrationBuilder.DropTable(name: "Quantities");
         }
     }
 }

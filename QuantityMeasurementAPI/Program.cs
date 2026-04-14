@@ -42,7 +42,7 @@ builder.Services.AddSwaggerGen(options =>
     });
 
 builder.Services.AddDbContext<QuantityDbContext>(options =>
-    options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
+    options.UseNpgsql(builder.Configuration.GetConnectionString("DefaultConnection")));
 
 //for authentication
 builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
